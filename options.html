@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Focus Leading Reader – Options</title>
+    <style>
+      body { font-family: system-ui, Arial, sans-serif; margin: 24px; max-width: 800px; line-height: 1.6; }
+      input[type="text"], input[type="number"] { width: 240px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>Focus Leading Reader – Options</h1>
+    <p>Configure defaults for the extension. “Bionic Reading” is a registered mark; this tool is unaffiliated and simply styles leading characters.</p>
+    <div class="grid">
+      <label>Proportion <input id="prop" type="number" min="0.1" max="0.9" step="0.05"></label>
+      <label>Line height <input id="lh" type="number" min="1.2" max="2.0" step="0.1"></label>
+      <label>Min bold <input id="minb" type="number" min="1" max="6"></label>
+      <label>Max bold <input id="maxb" type="number" min="1" max="8"></label>
+      <label>Min word length <input id="minw" type="number" min="1" max="8"></label>
+      <label style="grid-column: span 2;">Font family <input id="font" type="text" size="60"></label>
+    </div>
+    <p><button id="save">Save</button></p>
+    <script>
+      const defaults={proportion:0.4,minBold:1,maxBold:4,minWordLen:3,fontFamily:'system-ui, Arial, Helvetica, sans-serif',lineHeight:1.6};
+      chrome.storage.sync.get(defaults,(v)=>{
+        prop.value=v.proportion; minb.value=v.minBold; maxb.value=v.maxBold; minw.value=v.minWordLen;
+        font.value=v.fontFamily; lh.value=v.lineHeight;
+      });
+      save.onclick=()=>chrome.storage.sync.set({
+        proportion:+prop.value, minBold:+minb.value, maxBold:+maxb.value, minWordLen:+minw.value,
+        fontFamily:font.value, lineHeight:+lh.value
+      });
+    </script>
+  </body>
+</html>

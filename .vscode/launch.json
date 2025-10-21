@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Chrome: load extension & open test page",
+      "type": "pwa-chrome",
+      "request": "launch",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-extensions-except=${workspaceFolder}",
+        "--load-extension=${workspaceFolder}",
+        "https://example.com"
+      ],
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Edge: load extension & open test page",
+      "type": "pwa-msedge",
+      "request": "launch",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222",
+        "--disable-extensions-except=${workspaceFolder}",
+        "--load-extension=${workspaceFolder}",
+        "https://example.com"
+      ],
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

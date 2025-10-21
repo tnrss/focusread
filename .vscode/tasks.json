@@ -1,0 +1,21 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Zip extension",
+      "type": "shell",
+      "command": "python3 - << 'PY'\nimport os, zipfile\nbase='.'\nwith zipfile.ZipFile('focus-leading-reader.zip','w',zipfile.ZIP_DEFLATED) as z:\n  for root,_,files in os.walk(base):\n    for fn in files:\n      if root.startswith('./.vscode'): continue\n      path=os.path.join(root,fn)\n      z.write(path, os.path.relpath(path, base))\nprint('Created focus-leading-reader.zip')\nPY",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "ESLint: fix",
+      "type": "shell",
+      "command": "npx eslint . --ext .js --fix",
+      "problemMatcher": []
+    }
+  ]
+}

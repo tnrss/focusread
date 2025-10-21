@@ -1,0 +1,15 @@
+{
+  "name": "focus-leading-reader",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bold leading letters to aid faster reading (MV3 extension).",
+  "scripts": {
+    "lint": "eslint . --ext .js",
+    "fix": "eslint . --ext .js --fix",
+    "zip": "python3 -c \"import os,zipfile; z=zipfile.ZipFile('focus-leading-reader.zip','w',zipfile.ZIP_DEFLATED); [z.write(os.path.join(r,f), os.path.relpath(os.path.join(r,f), '.')) for r,_,fs in os.walk('.') for f in fs if not r.startswith('./.vscode')]; z.close(); print('focus-leading-reader.zip created')\""
+  },
+  "devDependencies": {
+    "eslint": "^9.11.0",
+    "prettier": "^3.3.3"
+  }
+}
